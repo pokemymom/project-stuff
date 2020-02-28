@@ -41,8 +41,8 @@ public class UserInfoDriver {
       
       String password = user.encrypt(JOptionPane.showInputDialog(f, "Enter a new password"));
       user.setPassword(password);
-        
-      JOptionPane.showMessageDialog(f, user.getName() + "\n" + );
+      
+      JOptionPane.showMessageDialog(f, user.getName() + "\n" + user.getAddress() + "\n" + user.getUsername() + "\n" + user.getPassword());
     } while (JOptionPane.showConfirmDialog(f, "do you want to repeat?", "exit", JOptionPane.YES_NO_OPTION) == 0);
   }
 }
