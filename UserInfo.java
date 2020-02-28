@@ -24,18 +24,22 @@ TOTAL: 48 points
 import java.lang.Math;
 
 public class UserInfo {
+  //declare
   private String name;
   private String address;
   private String username;
   private String password;
   
+  //constructor
   public UserInfo() {
+    //initialize
     String name="";
     String address="";
     String username="";
     String password="";
   }  
-    
+  
+  //combine all the methods
   public String encrypt(String s){
     s = removeWhitespaceAndConvertToUpper(s);
     s = substitute(s);
@@ -50,6 +54,8 @@ public class UserInfo {
     //remove all whitespaces from the password
     s = s.trim();
     s = s.toUpperCase();
+    
+    return s
   }
   
   public String substitute(String s) {
@@ -65,6 +71,8 @@ public class UserInfo {
     s = s.replace ("V", "^");
     s = s.replace ("X", "%");
     s = s.replace (" ", "_");
+    
+    return s
   }
   
   public String swapHalfsForEncrypt(String s) {
@@ -78,9 +86,7 @@ public class UserInfo {
           s_sub = s.substring(0,s.endIndex);
           last_sub = s.substring(s.endIndex+1);
           new_str = last_sub + s_sub;
-        }
-        // Odd number
-        if(count % 2 != 0){
+        } else {
           s.endIndex = count/2;
           s_sub = s.substring(0, s.endIndex);
           last_sub = s.substring(s.endIndex+1);
@@ -88,6 +94,8 @@ public class UserInfo {
         }
       }
     }
+    
+    return new_str;
   }
   
   // swapFirst2WithLast2
@@ -96,6 +104,8 @@ public class UserInfo {
     middle_sub = new_str.substring(2,count-2);
     last_sub = new_str.substring(count-2, count);        
     new_str = last_sub + middle_sub + first_sub;
+    
+    return new_str;
   }
   
   //swapMiddleChars
