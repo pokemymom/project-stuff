@@ -93,7 +93,7 @@ public class UserInfo {
     .replaceAll("O", "*")
     .replaceAll("P", "#")
     .replaceAll("R", "&")
-    .replaceAll("S", "//$") //thx stack overflow
+    .replaceAll("S", "\\$") //thx stack overflow
     .replaceAll("T", "+")
     .replaceAll("V", "^")
     .replaceAll("X", "%")
