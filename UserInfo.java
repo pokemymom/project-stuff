@@ -23,7 +23,7 @@ TOTAL: 48 points
 
 import java.lang.Math;
 
-public class UserInfo {
+public class Userinfo {
   //declare
   private String name;
   private String address;
@@ -55,7 +55,7 @@ public class UserInfo {
     s = s.trim();
     s = s.toUpperCase();
     
-    return s
+    return s;
   }
   
   public String substitute(String s) {
@@ -63,7 +63,7 @@ public class UserInfo {
     s = s.replace ("E", "=");
     s = s.replace ("I", "!");
     s = s.replace ("J", "?");
-    s = s.replace ("O", "*" );
+    s = s.replace ("O", "*");
     s = s.replace ("P", "#");
     s = s.replace ("R", "&");
     s = s.replace ("S", "$");
@@ -72,7 +72,7 @@ public class UserInfo {
     s = s.replace ("X", "%");
     s = s.replace (" ", "_");
     
-    return s
+    return s;
   }
   
   public String swapHalfsForEncrypt(String s) {
