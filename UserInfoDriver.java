@@ -29,20 +29,23 @@ public class UserInfoDriver {
     JFrame f = new JFrame();
     UserInfo user = new UserInfo();
     
+    //input
     do {
-      String name = JOptionPane.showInputDialog(f, "Enter a new name");
+      String name = JOptionPane.showInputDialog(f, "name");
       user.setName(name);
       
-      String address = JOptionPane.showInputDialog(f, "Enter a new address");
+      String address = JOptionPane.showInputDialog(f, "address");
       user.setAddress(address);
       
-      String username = JOptionPane.showInputDialog(f, "Account Created!\nEnter a new username");
+      String username = JOptionPane.showInputDialog(f, "username");
       user.setUsername(username);
       
-      String password = user.encrypt(JOptionPane.showInputDialog(f, "Enter a new password"));
+      String password = user.encrypt(JOptionPane.showInputDialog(f, "password"));
       user.setPassword(password);
       
+      //result
       JOptionPane.showMessageDialog(f, user.getName() + "\n" + user.getAddress() + "\n" + user.getUsername() + "\n" + user.getPassword());
     } while (JOptionPane.showConfirmDialog(f, "do you want to repeat?", "exit", JOptionPane.YES_NO_OPTION) == 0);
+    //while condition is user controlled exit
   }
 }

@@ -23,7 +23,7 @@ TOTAL: 48 points
 
 import java.lang.Math;
 
-public class Userinfo {
+public class UserInfo {
   //declare
   private String name;
   private String address;
@@ -33,99 +33,100 @@ public class Userinfo {
   //constructor
   public UserInfo() {
     //initialize
-    String name="";
-    String address="";
-    String username="";
-    String password="";
-  }  
+    this.name = "";
+    this.address = "";
+    this.username = "";
+    this.password = "";
+  }
+
+  //name
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  //address
+  public String getAddress() {
+    return address;
+  }
+  public void setAddress(String address) {
+    this.address = address;
+  }
+  //username
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+  //password
+  public String getPassword() {
+    return password;
+  }
+  public void setPassword(String password) {
+    this.password = password;
+  }
   
   //combine all the methods
-  public String encrypt(String s){
-    s = removeWhitespaceAndConvertToUpper(s);
-    s = substitute(s);
-    s = swapHalfsForEncrypt(s);
-    s = swapFirst2WithLast2(s);
-    s = swapMiddleChars(s);
+  public String encrypt(String input){
+    input = removeWhitespaceAndConvertToUpper(input);
+    input = substitute(input);
+    input = swapHalfsForEncrypt(input);
+    input = swapFirst2WithLast2(input);
+    input = swapMiddleChars(input);
     
-    return s;
+    return input;
   }  
   
-  public String removeWhitespaceAndConvertToUpper(String s) {
-    //remove all whitespaces from the password
-    s = s.trim();
-    s = s.toUpperCase();
-    
-    return s;
+  public String removeWhitespaceAndConvertToUpper(String input) {
+    //trims and makes uppercase
+    return input.trim().toUpperCase();
   }
   
-  public String substitute(String s) {
-    s = s.replace ("A", "@");
-    s = s.replace ("E", "=");
-    s = s.replace ("I", "!");
-    s = s.replace ("J", "?");
-    s = s.replace ("O", "*");
-    s = s.replace ("P", "#");
-    s = s.replace ("R", "&");
-    s = s.replace ("S", "$");
-    s = s.replace ("T", "+");
-    s = s.replace ("V", "^");
-    s = s.replace ("X", "%");
-    s = s.replace (" ", "_");
-    
-    return s;
+  public String substitute(String input) {
+    return input
+    .replaceAll("A", "@")
+    .replaceAll("E", "=")
+    .replaceAll("I", "!")
+    .replaceAll("J", "?")
+    .replaceAll("O", "*")
+    .replaceAll("P", "#")
+    .replaceAll("R", "&")
+    .replaceAll("S", "//$") //thx stack overflow
+    .replaceAll("T", "+")
+    .replaceAll("V", "^")
+    .replaceAll("X", "%")
+    .replaceAll(" ", "_");
   }
   
-  public String swapHalfsForEncrypt(String s) {
-    int count=0;
-    for (int i=0; i<s.length(); i++) {
-      if (Character.isDigit(s.charAt(i))) {
-        count++;  
-        // Even number
-        if(count % 2 == 0){
-          s.endIndex = count/2-1;
-          s_sub = s.substring(0,s.endIndex);
-          last_sub = s.substring(s.endIndex+1);
-          new_str = last_sub + s_sub;
-        } else {
-          s.endIndex = count/2;
-          s_sub = s.substring(0, s.endIndex);
-          last_sub = s.substring(s.endIndex+1);
-          new_str = last_sub + s_sub;
-        }
-      }
-    }
-    
-    return new_str;
+  public String swapHalfsForEncrypt(String input) {
+    return
+    input.substring((int)Math.ceil((float)input.length() / 2), input.length()) +
+    input.substring(0, (int)Math.ceil((float)input.length() / 2));
   }
   
   // swapFirst2WithLast2
-  public String swapFirst2WithLast2(String s) {
-    first_sub = new_str.substring(0,2);
-    middle_sub = new_str.substring(2,count-2);
-    last_sub = new_str.substring(count-2, count);        
-    new_str = last_sub + middle_sub + first_sub;
-    
-    return new_str;
+  public String swapFirst2WithLast2(String input) {
+    return
+    input.substring(input.length() - 2, input.length()) +
+    input.substring(2, input.length() - 2) +
+    input.substring(0, 2);
   }
   
   //swapMiddleChars
-  public String swapMiddleChars(String s) {
-    // even number
-    if(count % 2 == 0){
-      first_str = s.substring(count/2-2,count/2);
-      second_str = s.substring(count/2,count/2+2);
-      first_remain = s.substring(0,count/2-2);
-      second_remain = s.substring(count/2+2, count);
-      new_str = first_remain + second_str + first_str + second_remain;
-    }
-    // odd number
-    if(count % 2 != 0){
-      first_str = s.substring(count/2+1-2,count/2+1);
-      second_str = s.substring(count/2+1,count/2+3);
-      first_remain = s.substring(0,count/2+1-2);
-      second_remain = s.substring(count/2+3, count);
-      new_str = first_remain + second_str + first_str + second_remain;
-    }
-    return new_str;
+  public String swapMiddleChars(String input) {
+    return
+    input.substring(0, (int)Math.ceil((float)input.length() / 2) - 2) +
+    input.substring((int)Math.ceil((float)input.length() / 2), (int)Math.ceil((float)input.length() / 2) + 2) +
+    input.substring((int)Math.ceil((float)input.length() / 2) - 2, (int)Math.ceil((float)input.length() / 2)) +
+    input.substring((int)Math.ceil((float)input.length() / 2) + 2, input.length());
   }
+    
+    
+    
+    //toString
+    public String toString() {
+        return "Name:"+name+"\n"+"Address:"+address+"\n"+"Username:"+username+"\n"+"Encrypted Password:"+ password;
+    }
 }
