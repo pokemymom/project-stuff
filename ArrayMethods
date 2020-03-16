@@ -16,6 +16,16 @@ public class ArrayMethods {
             System.out.println(([c]); 
         } 
     } 
+    for (int index = 0; index < LIMIT; index++)
+         list[index] = index * MULTIPLE;
+      
+      list[5] = 999;  // change one array value
+      
+      for (int index = 0; index < LIMIT; index++)
+         System.out.print (list[index] + "  ");
+      
+      System.out.println (); 
+      {
     public static void main(String[] args) 
     { 
         int [] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
