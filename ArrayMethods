@@ -36,6 +36,7 @@ public class ArrayMethods
 	{
 		//scanner
 		Scanner sc = new Scanner(System. in );
+		String option2 = "";
 		do
 		{
 			//ask for input
@@ -45,27 +46,27 @@ public class ArrayMethods
 
 			if (option != 1 && option != 2 && option != 3)
 			{
-				System.out.println("Invalid operation! Please pick an operation from 1 to 3.");
+				System.out.println("Pick a number from 1 to 3");
 			}
 			else
 			{
-				System.out.print("Type in the length of the array...");
+				System.out.println("Type array length");
 				int len = sc.nextInt();
 
 				int[] inputArray = new int[len];
 
 				for (int i = 0; i < len; i++)
 				{
-					System.out.print("Input Array: #" + (i + 1));
+					System.out.println("Input Array: " + (i+1));
 					inputArray[i] = sc.nextInt();
 				}
 
 				if (option == 1)
 				{
-					String retur = ""
+					String retur = "";
 		
 					//loop through each item
-					for (int number: inputArray)
+					for (int number: reverseArray(inputArray))
 					{
 						retur += number + ", ";
 					}
@@ -85,9 +86,9 @@ public class ArrayMethods
 			System.out.print("Repeat?(y/yes)");
 
 			sc.nextLine(); //otherwise does not work
-			option = sc.nextLine();
+			option2 = sc.nextLine();
 		}
-		while ( option . equals ("y") || option.equals("yes"));
+		while ( option2 . equals ("y") || option2.equals("yes"));
 	}
 
 	public static int[] reverseArray(int[] arr)
