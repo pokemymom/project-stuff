@@ -1,58 +1,137 @@
-public class ArrayMethods { 
-  
-    //fuctions to reverse an array and stores it
-    static void reverse(int a[], int b) 
-    { 
-        int[] a = new int[n]; 
-        int b = n; 
-        for (int i = 0; i < n; i++) { 
-            a[j - 1] = a[i]; 
-            b = b - 1; 
-        } 
-  
-        //prints a reversed array
-        System.out.println("Reversed array is: \n"); 
-        for (int c = 0; c < n; c++) { 
-            System.out.println(([c]); 
-        } 
-    } 
-    for (int index = 0; index < LIMIT; index++)
-         list[index] = index * MULTIPLE;
-      
-      list[5] = 999;  // change one array value
-      
-      for (int index = 0; index < LIMIT; index++)
-         System.out.print (list[index] + "  ");
-      
-      System.out.println (); 
-      {
-      }
-    public static void main(String[] args) 
-    { 
-        int [] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
-        reverse(arr, arr.length); {
-    } 
-    if (arr[0] > arr[1])   
-  { 
-      largest = arr[0]; 
-      smallest = arr[1]; 
-  }   
-  else
-  { 
-      largestvalue = arr[1]; 
-      smallestvalue = arr[0]; 
-  }     
-  
-  for (i = 2; i<n; i++) 
-  { 
-    if (arr[i] >  largestvalue)       
-      largestvalue = arr[i]; 
-    
-    else if (arr[i] <  smallestcalue)       
-      smallestvalue = arr[i]; 
-  } 
-    
-  return value;
-    }
-    }
+/* 
+ * Complete the following methods with the given signatures. All user input and output must occur in your main
+ * method. You are permitted to create other methods if you feel they would help you complete the task. Call your
+ * java file ArrayMethods. This is to be submitted to DropBox by March 16, in a folder called ArrayMethods. You
+ * are only completing one java file for this mini-project. For this program, you may use Scanner or JOptionPane.
+ * 
+ * In your main method, display a menu to ask the user for their desired task. The options are listed below. Once
+ * the user chooses a task, ask them for their desired array size. Then, prompt them to fill the array with integer
+ * values. When displaying an array, all entries must be on the same line (see below for sample output). When the
+ * process is complete, ask the user if they want to do it again.
+ * 
+ *     public static int[] reverseArray(int[] arr)
+ *         This method takes an integer array as a parameter and returns the array in reverse order.
+ *     public static int smallestValue(int[] arr)
+ *         This method takes an integer array as a parameter and returns the smallest value in the array.
+ *     public static int largestValue(int[] arr)
+ *         This method takes an integer array as a parameter and returns the largest value in the array.
+ * 
+ * This project will be graded on:
+ *     1. Documentation (4 points): Your code must be fully commented and employ standard Java-style conventions.
+ *     2. User-Friendliness (4 points): All interactions with the user must be clear and unambiguous.
+ *     3. Methods (12 points): Each method has the proper signature and works as expected.
+ * 
+ * TOTAL: 20 points
+ * 
+ * 1. Reverse an array
+ * 2. Smallest element of an array
+ * 3. Largest element of an array
+ */
+
+import java.util.Scanner;
+
+public class ArrayMethods
+{
+	public static void main(String[] args)
+	{
+		//scanner
+		Scanner sc = new Scanner(System. in );
+		do
+		{
+			//ask for input
+			System.out.println("1.Reverse array\n2.Smallest element of array\n3.Largest element of array");
+
+			int option = sc.nextInt();
+
+			if (option != 1 && option != 2 && option != 3)
+			{
+				System.out.println("Invalid operation! Please pick an operation from 1 to 3.");
+			}
+			else
+			{
+				System.out.print("Type in the length of the array...");
+				int len = sc.nextInt();
+
+				int[] inputArray = new int[len];
+
+				for (int i = 0; i < len; i++)
+				{
+					System.out.print("Input Array: #" + (i + 1));
+					inputArray[i] = sc.nextInt();
+				}
+
+				if (option == 1)
+				{
+					String retur = ""
+		
+					//loop through each item
+					for (int number: inputArray)
+					{
+						retur += number + ", ";
+					}
+					
+					System.out.println(retur);
+				}
+				else if (option == 2)
+				{
+					System.out.println(smallestValue(inputArray));
+				}
+				else if (option == 3)
+				{
+					System.out.println(largestValue(inputArray));
+				}
+			}
+
+			System.out.print("Repeat?(y/yes)");
+
+			sc.nextLine(); //otherwise does not work
+			option = sc.nextLine();
+		}
+		while ( option . equals ("y") || option.equals("yes"));
+	}
+
+	public static int[] reverseArray(int[] arr)
+	{
+		int[] retur = new int[arr.length];
+
+		//loop array
+		for (int i = 0; i < arr.length; i++)
+		{
+			//flip array items
+			retur[i] = arr[arr.length-i-1];
+		}
+
+		//return the result
+		return retur;
+	}
+
+	public static int smallestValue(int[] arr)
+	{
+		int min = 0;
+
+		for (int number: arr)
+		{
+			if (number < min)
+			{
+				min = number;
+			}
+		}
+
+		return min;
+	}
+
+	public static int largestValue(int[] arr)
+	{
+		int max = 0;
+
+		for (int number: arr)
+		{
+			if (number > max)
+			{
+				max = number;
+			}
+		}
+
+		return max;
+	}
 }
